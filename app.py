@@ -9,6 +9,7 @@ import pickle
 import pandas as pd
 
 
+
 # OCR
 from PIL import Image
 import pytesseract
@@ -351,10 +352,11 @@ import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 
+
 @app.route('/download-report', methods=['POST'])
 def download_report():
 
-    data = request.json or {}
+    data = request.get_json(silent=True) or {}
 
     filename = f"health_report_{datetime.now().strftime('%H%M%S')}.pdf"
     file_path = os.path.join(UPLOAD_FOLDER, filename)
@@ -540,9 +542,9 @@ def download_report():
     content.append(Spacer(1, 20))
 
     # QR CODE
-    from flask import request
+  
 
-    qr_data = request.host_url + f"uploads/{filename}"
+    qr_data = request.host_url + f"/uploads/{filename}"
     qr_code = qr.QrCodeWidget(qr_data)
     bounds = qr_code.getBounds()
 
