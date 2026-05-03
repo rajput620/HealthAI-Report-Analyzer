@@ -92,3 +92,36 @@ function googleLogin(){
         alert(err.message);
     });
 }
+
+
+
+
+const quotes = [
+    "Artificial Intelligence is reshaping healthcare by shifting focus from treatment to prevention. It enables early detection and smarter decisions that can save lives.",
+
+    "Healthcare powered by AI is no longer about reacting to illness. It is about predicting risks and taking action before problems even begin.",
+
+    "Your health data holds valuable insights about your future well-being. AI transforms this data into clear guidance that helps you live a healthier life.",
+
+    "Modern healthcare is evolving beyond traditional methods. With AI, diagnosis becomes faster, more accurate, and deeply personalized.",
+
+    "The future of medicine lies in intelligent systems that understand patterns humans might miss. AI brings clarity to complex health conditions.",
+
+    "Preventive care is becoming the foundation of a healthier world. AI empowers individuals to act early and avoid serious medical issues.",
+
+    "Every heartbeat, every habit, and every symptom tells a story. AI connects these signals to provide meaningful and actionable health insights.",
+
+    "Healthcare decisions should not rely on guesswork anymore. AI ensures that every recommendation is backed by data and precision.",
+
+    "Technology and healthcare are merging to create a smarter ecosystem. AI enables faster analysis and better outcomes for every individual.",
+
+    "Understanding your health should not be complicated. AI simplifies complex medical data into clear insights you can trust and act upon."
+];
+
+function showRandomQuote() {
+    const quoteElement = document.getElementById("aiQuote");
+    const randomIndex = Math.floor(Math.random() * quotes.length);
+    quoteElement.innerText = quotes[randomIndex];
+}
+
+window.onload = showRandomQuote;

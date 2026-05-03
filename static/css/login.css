@@ -38,14 +38,20 @@ body {
 }
 
 
-/* TEXT */
-.login-card h1 {
-    margin-bottom: 10px;
+.login-card h1{
+    color: #00c6ff;
+    text-shadow: 0 0 12px rgba(0,198,255,0.6);
+    font-size: 34px;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
+
+
 
 .login-card p {
     color: #aaa;
-    font-size: 14px;
+    font-size: 16px;
+    margin-bottom: 20px;
 }
 
 /* INPUT BOX */
@@ -118,67 +124,7 @@ body {
     color: #00c6ff;
 }
 
-/* FACE BUTTON */
-.face-login-btn {
-    width: 100%;
-    margin-top: 10px;
-    padding: 10px;   /* 🔥 reduced */
-    border-radius: 30px;
-    border: none;
-    background: #1e90ff;
-    color: white;
-    cursor: pointer;
-}
 
-/* MODAL BACKGROUND */
-.face-modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-
-    background: rgba(0,0,0,0.9);
-    display: none;
-    justify-content: center;
-    align-items: center;
-}
-
-/* FACE BOX */
-.face-box {
-    position: relative;
-    width: 350px;
-    height: 380px;  /* 🔥 reduced */
-    text-align: center;
-    color: white;
-}
-
-/* VIDEO */
-video {
-    width: 100%;
-    border-radius: 15px;
-}
-
-/* SCAN FRAME */
-.scan-frame {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 200px;   /* 🔥 reduced */
-    height: 200px;
-    transform: translate(-50%, -50%);
-    border: 3px solid cyan;
-    box-shadow: 0 0 25px cyan;
-
-    animation: scanAnim 1.5s infinite;
-}
-
-/* ANIMATION */
-@keyframes scanAnim {
-    0% { box-shadow: 0 0 10px cyan; }
-    50% { box-shadow: 0 0 40px cyan; }
-    100% { box-shadow: 0 0 10px cyan; }
-}
 
 
 .top-box{
@@ -227,16 +173,23 @@ video {
 }
 
 
-.login-card h1{
-    color: #00c6ff;
-    text-shadow: 0 0 12px rgba(0,198,255,0.6);
-    font-size: 26px;
+
+
+
+.ai-quote {
+    margin-top: 12px;
+    font-size: 18px;   /* increased size */
+    color: #9fb3c8;
+    font-style: italic;
+    text-align: center;
+    line-height: 1.5;
+    opacity: 0.9;
 }
 
-.login-card p{
-    margin-bottom: 15px;
-}
 
+.ai-quote {
+    white-space: pre-line;
+}
 
 
 
@@ -244,88 +197,48 @@ video {
 
 /* Tablets */
 @media (max-width: 1024px) {
+
     .login-card {
+        max-width: 420px;
         padding: 25px;
     }
 
     .login-card h1 {
-        font-size: 22px;
+        font-size: 30px;
+    }
+
+    .login-card p {
+        font-size: 15px;
+    }
+
+    .ai-quote {
+        font-size: 17px;
     }
 }
 
 
-/* Mobile */
+
+/* FIX MODAL ON MOBILE (remove outer container look) */
 @media (max-width: 768px) {
 
-    body {
+    .auth-modal {
+        padding: 0;                 /* no outer spacing */
         align-items: center;
-        padding: 20px;
-    }
-
-    .container {
-        height: auto;
         justify-content: center;
     }
 
-    .login-card {
+    .auth-container {
+        width: 100% !important;
+        height: auto !important;
+        background: transparent !important;  /* remove blue box */
+        box-shadow: none !important;
+        border-radius: 0 !important;
+    }
+
+    .auth-container iframe {
         width: 100%;
-        padding: 20px;
-        border-radius: 18px;
-    }
-
-    .login-card h1 {
-        font-size: 20px;
-    }
-
-    .login-card p {
-        font-size: 13px;
-    }
-
-    .input-box {
-        padding: 8px;
-    }
-
-    .input-box input {
-        font-size: 14px;
-    }
-
-    .login-btn {
-        padding: 10px;
-        font-size: 14px;
-    }
-
-    .socials {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .socials button {
-        width: 100%;
-        margin: 0;
-    }
-}
-
-
-/* Small Phones */
-@media (max-width: 480px) {
-
-    .login-card {
-        padding: 18px;
-    }
-
-    .login-card h1 {
-        font-size: 18px;
-    }
-
-    .login-card p {
-        font-size: 12px;
-    }
-
-    .input-box {
-        margin-top: 10px;
-    }
-
-    .login-btn {
-        font-size: 13px;
+        height: auto;
+        border: none;
+        background: transparent;
     }
 }
