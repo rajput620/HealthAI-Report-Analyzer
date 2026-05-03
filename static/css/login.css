@@ -1,7 +1,7 @@
 html, body {
     margin: 0;
     height: 100%;
-    overflow: hidden;   
+    overflow-x: hidden;   
 }
 
 /* BODY */
@@ -13,7 +13,9 @@ body {
 
 /* CENTER CARD */
 .login-card {
-    width: 360px;
+    width: 90%;
+    max-width: 360px;
+
 
     padding: 30px;
     border-radius: 25px;
@@ -233,4 +235,97 @@ video {
 
 .login-card p{
     margin-bottom: 15px;
+}
+
+
+
+
+/* ================= MOBILE RESPONSIVE ================= */
+
+/* Tablets */
+@media (max-width: 1024px) {
+    .login-card {
+        padding: 25px;
+    }
+
+    .login-card h1 {
+        font-size: 22px;
+    }
+}
+
+
+/* Mobile */
+@media (max-width: 768px) {
+
+    body {
+        align-items: center;
+        padding: 20px;
+    }
+
+    .container {
+        height: auto;
+        justify-content: center;
+    }
+
+    .login-card {
+        width: 100%;
+        padding: 20px;
+        border-radius: 18px;
+    }
+
+    .login-card h1 {
+        font-size: 20px;
+    }
+
+    .login-card p {
+        font-size: 13px;
+    }
+
+    .input-box {
+        padding: 8px;
+    }
+
+    .input-box input {
+        font-size: 14px;
+    }
+
+    .login-btn {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .socials {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .socials button {
+        width: 100%;
+        margin: 0;
+    }
+}
+
+
+/* Small Phones */
+@media (max-width: 480px) {
+
+    .login-card {
+        padding: 18px;
+    }
+
+    .login-card h1 {
+        font-size: 18px;
+    }
+
+    .login-card p {
+        font-size: 12px;
+    }
+
+    .input-box {
+        margin-top: 10px;
+    }
+
+    .login-btn {
+        font-size: 13px;
+    }
 }

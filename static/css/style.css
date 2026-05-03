@@ -1299,3 +1299,140 @@ main{
     cursor: pointer;
     z-index: 10;
 }
+
+
+
+.nav-links {
+    display: flex;
+}
+
+
+
+/* ================= MOBILE RESPONSIVE ================= */
+
+/* Tablets */
+@media (max-width: 1024px) {
+
+    .navbar {
+        padding: 15px 30px;
+    }
+
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-content p {
+        font-size: 1.1rem;
+    }
+
+    .section {
+        padding: 70px 30px;
+    }
+
+    .wave-title {
+        font-size: 45px;
+    }
+}
+
+
+/* Mobile Devices */
+@media (max-width: 768px) {
+
+    /* NAVBAR */
+    .navbar {
+        flex-direction: column;
+        gap: 10px;
+        padding: 15px;
+    }
+
+    .navbar div {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .navbar a {
+        margin: 8px;
+        font-size: 14px;
+    }
+
+    /* HERO */
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+
+    /* SECTION */
+    .section {
+        padding: 60px 20px;
+    }
+
+    /* DASHBOARD GRID */
+    .dash-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* PROGRAM CARDS */
+    .scroll-track {
+        grid-template-columns: 1fr;
+        padding: 10px;
+    }
+
+    /* TIMELINE */
+    .timeline::before {
+        left: 20px;
+    }
+
+    .timeline-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    /* FOOTER */
+    .footer-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    /* WAVE SECTION */
+    .wave-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .wave-title {
+        font-size: 32px;
+    }
+}
+
+
+/* Small Mobile */
+@media (max-width: 480px) {
+
+    .hero-content h1 {
+        font-size: 1.6rem;
+    }
+
+    .hero-content p {
+        font-size: 0.9rem;
+    }
+
+    .btn {
+        width: 100%;
+        display: block;
+        margin: 10px auto;
+    }
+
+    .navbar h2 {
+        font-size: 20px;
+    }
+
+}
