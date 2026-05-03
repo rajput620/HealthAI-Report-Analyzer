@@ -314,16 +314,16 @@ function uploadFile(){
     const formData = new FormData();
     formData.append("file", file);
 
-    fetch('/upload-report',{
+    fetch('https://healthai-report-analyzer.onrender.com/upload-report',{
         method:'POST',
         body: formData
     })
     .then(res=>res.json())
  .then(data=>{
 
-    uploadedData = data.data; // 🔥 full dataset
+    uploadedData = data.data; 
 
-    const first = data.first; // 🔥 first row
+    const first = data.first; 
 
     // autofill
     document.getElementById("age").value = first.age || "";

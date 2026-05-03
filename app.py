@@ -6,9 +6,7 @@ import os
 import json
 import logging
 import pickle
-
-
-
+import pandas as pd
 
 
 # OCR
@@ -17,16 +15,12 @@ import pytesseract
 from pdf2image import convert_from_bytes
 
 
-
 # ---------------- CONFIG ----------------
 
 app = Flask(__name__)
 app.secret_key = "super_secret_key"
 
 logging.basicConfig(level=logging.INFO)
-
-pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
-
 
 
 
