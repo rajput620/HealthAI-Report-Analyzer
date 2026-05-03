@@ -1,0 +1,595 @@
+/* ===== BODY ===== */
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    color: white;
+}
+
+/* ===== NAVBAR ===== */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background: rgba(0,0,0,0.4);
+}
+
+/* ===== CONTAINER ===== */
+.container {
+    padding: 30px;
+}
+
+/* ===== CARD ===== */
+.card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    animation: fadeIn 0.6s ease-in-out;
+}
+
+/* ===== GRID ===== */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px,1fr));
+    gap: 10px;
+}
+
+/* ===== INPUT ===== */
+input {
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+}
+
+/* ===== BUTTON ===== */
+button {
+    margin-top: 15px;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(90deg, #00c6ff, #0072ff);
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+/* ===== RESULT CARDS ===== */
+.cards {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.result {
+    flex: 1;
+    text-align: center;
+    font-size: 20px;
+    transition: 0.3s;
+}
+
+.result:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 25px rgba(0,255,255,0.3);
+}
+
+/* ===== COLORS ===== */
+.diabetes { border-left: 5px solid #ff4d4d; }
+.heart { border-left: 5px solid #ffcc00; }
+.bp { border-left: 5px solid #00ffcc; }
+
+/* ===== HEALTH SCORE ===== */
+#healthScore {
+    font-size: 28px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.green { color: #00ff99; }
+.yellow { color: #ffcc00; }
+.red { color: #ff4d4d; }
+
+/* ===== CHAT UI ===== */
+.chat-toggle{
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background: linear-gradient(135deg,#00c6ff,#0072ff);
+    color: white;
+    font-size: 20px;
+    padding: 14px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(0,198,255,0.6);
+}
+
+.chat-box{
+    position: fixed;
+    bottom: 90px;
+    right: 25px;
+    width: 320px;
+    height: 450px;
+    background: #1e2a32;
+    border-radius: 15px;
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 0 25px rgba(0,0,0,0.5);
+}
+
+.chat-header{
+    background: linear-gradient(135deg,#00c6ff,#0072ff);
+    padding: 12px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+}
+
+.chat-messages{
+    flex: 1;
+    padding: 12px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.user-msg{
+    align-self: flex-end;
+    background: #00c6ff;
+    padding: 10px 14px;
+    border-radius: 15px 15px 0 15px;
+    margin: 6px 0;
+    max-width: 75%;
+}
+
+.ai-msg{
+    align-self: flex-start;
+    background: #2c3e50;
+    padding: 10px 14px;
+    border-radius: 15px 15px 15px 0;
+    margin: 6px 0;
+    max-width: 75%;
+}
+
+.typing{
+    font-size: 12px;
+    opacity: 0.7;
+}
+
+.chat-input{
+    display: flex;
+    border-top: 1px solid #444;
+}
+
+.chat-input input{
+    flex: 1;
+    padding: 10px;
+    border: none;
+    outline: none;
+}
+
+.chat-input button{
+    background: #00c6ff;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+/* ===== ANIMATION ===== */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== LIGHT MODE ===== */
+body.light {
+    background: #f5f5f5;
+    color: black;
+}
+
+
+/* ================= GAUGE WRAPPER ================= */
+.gauge-wrapper{
+    position: relative;
+    width: 220px;
+    margin: auto;
+}
+
+/* ================= CANVAS ================= */
+#healthGauge{
+    width: 220px !important;
+    height: 220px !important;
+    position: relative;
+    z-index: 2;
+}
+
+/* ================= CENTER NUMBER ================= */
+#gaugeValue{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 28px;
+    font-weight: bold;
+    color: white;
+    z-index: 3;
+}
+
+/* ================= GLOW ================= */
+#gaugeGlow{
+    position: absolute;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    filter: blur(25px);
+
+    opacity: 0;
+    transition: 0.3s ease;
+}
+
+.gauge-glow-base{
+    opacity: 0.6;
+}
+
+/* ================= GLOW ANIMATION ================= */
+@keyframes pulseGlow{
+    0% { transform: scale(1); opacity: 0.5; }
+    50% { transform: scale(1.15); opacity: 0.8; }
+    100% { transform: scale(1); opacity: 0.5; }
+}
+
+.glow-green{
+    background: #00ff99;
+    animation: pulseGlow 2s infinite;
+}
+
+.glow-yellow{
+    background: #ffcc00;
+    animation: pulseGlow 1.5s infinite;
+}
+
+.glow-red{
+    background: #ff4d4d;
+    animation: pulseGlow 0.8s infinite;
+}
+
+/* ================= HEARTBEAT ================= */
+.heartbeat-wrapper{
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+/* HEART DOT (FIXED) */
+#heartbeat{
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+
+    /* 🔥 IMPORTANT FIX */
+    background: currentColor;   /* dynamic color */
+    color: #00ff99;             /* default fallback */
+
+    box-shadow: 0 0 15px currentColor;
+    transition: 0.3s;
+}
+
+/* HEARTBEAT ANIMATION */
+@keyframes heartbeatPulse{
+    0%   { transform: scale(1); }
+    50%  { transform: scale(1.6); }
+    100% { transform: scale(1); }
+}
+
+/* COLORS (CLEANED) */
+.beat-green{
+    color: #00ff99;
+    animation: heartbeatPulse 1.2s infinite;
+}
+
+.beat-yellow{
+    color: #ffcc00;
+    animation: heartbeatPulse 0.9s infinite;
+}
+
+.beat-red{
+    color: #ff4d4d;
+    animation: heartbeatPulse 0.6s infinite;
+}
+
+
+/* ================= ECG WRAPPER ================= */
+.ecg-wrapper{
+    width: 100%;
+    margin-top: 20px;
+    overflow: hidden;
+}
+
+/* SVG LINE */
+.ecg{
+    width: 100%;
+    height: 80px;
+}
+
+/* ECG PATH */
+.ecg path{
+    fill: none;
+    stroke: #00ff99; /* default green */
+    stroke-width: 3;
+
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+
+    animation: ecgMove 2.5s linear infinite;
+}
+
+/* ANIMATION */
+@keyframes ecgMove{
+    0%{
+        stroke-dashoffset: 1000;
+    }
+    100%{
+        stroke-dashoffset: 0;
+    }
+}
+
+#simBtn{
+    background: linear-gradient(90deg, #ffcc00, #ff9900);
+}
+
+
+
+/* ================= VITALS ================= */
+.vitals{
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 15px;
+}
+
+.vital-box{
+    background: rgba(255,255,255,0.05);
+    padding: 10px 20px;
+    border-radius: 10px;
+    text-align: center;
+    min-width: 120px;
+}
+
+#bpmValue{
+    font-size: 22px;
+    font-weight: bold;
+    color: #00ff99;
+}
+
+#patientStatus{
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* STATUS COLORS */
+.status-good{
+    color: #00ff99;
+}
+
+.status-warning{
+    color: #ffcc00;
+}
+
+.status-danger{
+    color: #ff4d4d;
+}
+
+
+
+.slider {
+    position: relative;
+    width: 100%;
+}
+
+.slide {
+    display: none;
+    width: 100%;
+}
+
+.slide.active {
+    display: block;
+}
+
+.slider-controls {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.slider-controls button {
+    padding: 8px 15px;
+    margin: 5px;
+    border: none;
+    border-radius: 8px;
+    background: #00aaff;
+    color: white;
+    cursor: pointer;
+}
+
+@keyframes fade {
+    from { opacity: 0; transform: translateX(20px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+/* Pie chart size */
+#conditionChart{
+    max-width: 220px;
+    max-height: 220px;
+    margin: auto;
+}
+
+/* Slide fix */
+#conditionSlide{
+    display: none;        /* JS controls visibility */
+    text-align: center;
+    min-height: 300px;    /* IMPORTANT for chart visibility */
+}
+
+
+/* ===== GRID ===== */
+.insight-grid{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 10px;
+
+    width: 100%;
+    padding: 0 12px;        /* 🔥 left-right balance */
+    box-sizing: border-box;
+    overflow: hidden;       /* 🔥 fix right overflow */
+}
+
+/* ===== CARD ===== */
+.insight-card{
+    position: relative;     /* 🔥 required for ::before */
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+
+    background: linear-gradient(135deg,#1f3a44,#2c5364);
+    border-radius: 12px;
+    padding: 14px 16px;
+    color: #fff;
+
+    box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+
+    transform: translateY(20px);
+    opacity: 0;
+
+    animation: cardIn 0.5s ease forwards;
+
+    transition: all 0.3s ease;   /* 🔥 hover smooth */
+}
+
+/* ===== HOVER EFFECT ===== */
+.insight-card:hover{
+    transform: translateY(-4px) scale(1.01);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.35);
+}
+
+/* ===== LEFT COLOR BAR ===== */
+.insight-card::before{
+    content:"";
+    position:absolute;
+    left:0;
+    top:0;
+    bottom:0;
+    width:4px;
+    border-radius:12px 0 0 12px;
+    background:#00c6ff;
+    transition: all 0.3s ease;
+}
+
+/* color types */
+.insight-card.high::before{ background:#ff4d4d; }
+.insight-card.mid::before{ background:#ffcc00; }
+.insight-card.good::before{ background:#00ff99; }
+
+/* glow on hover */
+.insight-card:hover::before{
+    width:6px;
+    box-shadow: 0 0 10px currentColor;
+}
+
+/* ===== TEXT ===== */
+.insight-title{
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.insight-text{
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+/* ===== ANIMATION ===== */
+@keyframes cardIn{
+    to{
+        transform: translateY(0);
+        opacity:1;
+    }
+}
+
+
+
+/* container */
+.ai-box{
+    padding:12px 14px;
+    border-radius:10px;
+    background: rgba(255,255,255,0.05);
+    border-left:4px solid #00c6ff;
+    color:#fff;
+}
+
+/* status colors */
+.ai-box.good { border-left-color:#00ff99; }
+.ai-box.mid  { border-left-color:#ffcc00; }
+.ai-box.high { border-left-color:#ff4d4d; }
+
+/* title */
+.ai-status{
+    font-size:16px;
+    font-weight:600;
+    margin-bottom:8px;
+}
+
+/* sections */
+.ai-section{
+    margin-top:8px;
+}
+
+/* headings */
+.ai-section h4{
+    margin:4px 0;
+    color:#00c6ff;
+    font-size:13px;
+}
+
+/* remove default spacing */
+.ai-section ul{
+    margin:4px 0;      /* 🔥 FIX GAP */
+    padding-left:16px;
+}
+
+.ai-section li{
+    margin:2px 0;      /* 🔥 tighter spacing */
+    font-size:13px;
+}
+
+
+.download-btn{
+    padding: 12px 20px;
+    background: linear-gradient(135deg,#00c6ff,#0072ff);
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+}
+
+.download-btn:hover{
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+}
